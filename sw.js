@@ -1,4 +1,4 @@
-const CACHE_NAME = 'neon-planner-v9';
+const CACHE_NAME = 'neon-planner-v10';
 // Список файлов для кэширования
 const ASSETS = [
   './',
