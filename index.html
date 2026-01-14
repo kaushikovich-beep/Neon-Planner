@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>🎄 Neon Planner Pro</title>
+    <title>🎄 Marina_shopping-list Pro</title>
     
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -63,17 +63,45 @@
         .section { display: none; }
         .section.active { display: block; }
 
-        /* Оболочка для списка и боковых кнопок */
+/* Оболочка для списка и боковых кнопок */
         .list-wrapper {
-            display: flex; align-items: stretch; gap: 8px; margin-bottom: 10px;
+            display: flex; 
+            align-items: stretch; /* Растягивает список и контейнер кнопок по высоте */
+            gap: 8px; 
+            margin-bottom: 10px;
+        }
+
+        /* НОВЫЙ БЛОК: Контейнер для кнопок справа */
+        .move-controls {
+            display: flex;
+            flex-direction: column; /* Кнопки в столбик */
+            gap: 8px;
+            width: 45px; /* Ширина кнопок */
         }
 
         .move-btn {
-            width: 40px; background: var(--card-bg); border: 1px solid var(--gold);
-            border-radius: 10px; color: var(--gold); font-size: 24px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
+            flex: 1; /* РАСТЯГИВАЕТ кнопки поровну на всю высоту */
+            background: var(--card-bg); 
+            border: 1px solid var(--gold);
+            border-radius: 10px; 
+            color: var(--gold); 
+            font-size: 24px; 
+            cursor: pointer;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transition: 0.2s;
+            font-size: 18px; /* Чуть уменьшим размер для изящности */
+            text-shadow: 0 0 10px var(--gold); /* Добавим неоновое свечение */
+     
         }
-
+        
+        .move-btn:active {
+    background: var(--gold);
+    color: #000;
+    text-shadow: none;
+       
+        }
 /* Исправленный контейнер списка */
 #list-container {
     flex: 1; 
@@ -162,12 +190,14 @@
     </div>
 
     <div id="planner" class="section active">
-        <div class="list-wrapper">
-            <button class="move-btn" onclick="moveItems('up')">↑</button>
-            <div id="list-container"></div>
-            <button class="move-btn" onclick="moveItems('down')">↓</button>
-        </div>
-
+<div class="list-wrapper">
+    <div id="list-container"></div>
+    
+    <div class="move-controls">
+       <button class="move-btn" onclick="moveItems('up')">&#9650;</button>
+       <button class="move-btn" onclick="moveItems('down')">&#9660;</button>
+    </div>
+</div>
         <div id="totals-container">
             <div>💰 Итого: <strong><span id="total-sum">0.00</span> ₽</strong></div>
             <div style="color:var(--green)">🎁 Куплено: <strong><span id="paid-sum">0.00</span> ₽</strong></div>
